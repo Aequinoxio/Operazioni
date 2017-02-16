@@ -1,0 +1,118 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context="com.example.utente.operazioni.MainActivity"
+    android:visibility="visible">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/layMain">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtResultOk"
+                android:layout_above="@+id/txtOperazione"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center_horizontal"
+                android:textSize="36sp" />
+
+            <TextView
+                android:text="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtResultKO"
+                android:layout_below="@+id/edRisposta"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"
+                android:background="@android:color/holo_red_light"
+                android:gravity="center_horizontal"
+                android:textSize="36sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtOperazione"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            android:text="5 X 5"
+            android:textColor="@android:color/black"
+            android:textSize="80sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/txtResultKO" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/edRisposta"
+                android:layout_weight="1"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:textStyle="normal|bold"
+                android:keepScreenOn="false"
+                android:numeric="integer"
+                android:singleLine="true" />
+
+            <Button
+                android:text="Verifichiamo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button"
+                android:layout_weight="1"
+                android:onClick="checkResult"
+                android:textSize="24sp"
+                android:background="@android:color/holo_purple" />
+
+        </LinearLayout>
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:checkedButton="@+id/radioButtonMolt">
+
+            <RadioButton
+                android:text="Moltiplicazioni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonMolt"
+                android:onClick="onRadioButtonClicked" />
+
+            <RadioButton
+                android:text="Addizioni"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonAdd"
+                android:onClick="onRadioButtonClicked" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+</FrameLayout>
