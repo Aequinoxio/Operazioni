@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="#0099cc"
     tools:context="com.example.utente.operazioni.MainActivity"
-    android:visibility="visible">
+    android:visibility="visible"
+    android:id="@+id/layActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -25,27 +26,31 @@
 
             <TextView
                 android:text="0"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtResultOk"
-                android:layout_above="@+id/txtOperazione"
-                android:layout_alignParentStart="true"
                 android:layout_weight="1"
                 android:background="@android:color/holo_green_light"
                 android:gravity="center_horizontal"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/space"
+                android:layout_width="match_parent" />
 
             <TextView
                 android:text="0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtResultKO"
-                android:layout_below="@+id/edRisposta"
-                android:layout_alignParentStart="true"
                 android:layout_weight="1"
                 android:background="@android:color/holo_red_light"
                 android:gravity="center_horizontal"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_row="0"
+                android:layout_column="2" />
+
         </LinearLayout>
 
         <TextView
@@ -68,7 +73,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:ems="10"
                 android:id="@+id/edRisposta"
                 android:layout_weight="1"
@@ -77,7 +81,8 @@
                 android:textStyle="normal|bold"
                 android:keepScreenOn="false"
                 android:numeric="integer"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:inputType="number" />
 
             <Button
                 android:text="Verifichiamo"
@@ -110,9 +115,34 @@
                 android:id="@+id/radioButtonAdd"
                 android:onClick="onRadioButtonClicked" />
         </RadioGroup>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background="#FF000000">
+        <!-- NOTE No need to develop a system service for keyboard, there is a standard View for that (well, not completely standard, its in a funny package 'android.inputmethodservice'. -->
+        <!-- NOTE The graphical layout does not know the package ('java.lang.NoClassDefFoundError: Could not initialize class android.inputmethodservice.KeyboardView') so the keyboard is not shown. -->
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/keyboardview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:visibility="gone"
+            android:background="#00000000"
+            android:theme="@style/AppTheme"
+            android:backgroundTint="#00000000"
+            android:alpha="50" />
+        </LinearLayout>
     </LinearLayout>
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
+
+
 
 </FrameLayout>

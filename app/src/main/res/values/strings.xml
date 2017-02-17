@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Operazioni</string>
+    <string name="action_about">Informazioni</string>
+    <string name="Autore">Gabriele Galluzzo</string>
+    <string name="descrizione">
+        Operazioni è una semplice applicazione per permettere ai bambini di verificare se hanno appreso le tabelline e sanno compiere semplici operazioni di addizione.
+        \nFatta a posta per Sofia
+    </string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
