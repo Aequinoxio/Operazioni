@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showToastResult(String s){
         Toast toast = Toast.makeText(this, s, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0, 0);
         toast.show();
     }
 

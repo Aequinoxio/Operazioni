@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="20%p"
-    android:keyHeight="10%p">
+    android:keyHeight="10%p"
+    android:horizontalGap="0.5%p"
+    android:verticalGap="0.5%p">
 <!--
     android:horizontalGap="0.50%p"
     android:verticalGap="0.50%p"
@@ -15,7 +17,6 @@
         <Key android:codes="57"    android:keyLabel="9" />
         <!--<Key android:codes="65"    android:keyLabel="A" android:popupKeyboard="@xml/popup" android:popupCharacters="aA" android:horizontalGap="6.25%p" />-->
         <!--<Key android:codes="66"    android:keyLabel="B" android:popupKeyboard="@xml/popup" android:popupCharacters="bB" />-->
-        <Key android:codes="-5"    android:keyIcon="@drawable/sym_keyboard_delete" android:isRepeatable="true" android:horizontalGap="6.25%p" />
         <!--<Key android:codes="55006" android:keyLabel="CLR" android:keyEdgeFlags="right"/>-->
     </Row>
     <Row>
@@ -38,7 +39,8 @@
         <!--<Key android:codes="55004" android:keyIcon="@drawable/sym_keyboard_allright" android:keyEdgeFlags="right" />-->
     </Row>
     <Row>
-        <Key android:codes="48"    android:keyLabel="0"  android:keyWidth="50%p" android:horizontalGap="5%p" android:keyEdgeFlags="left" />
+        <Key android:codes="48"    android:keyLabel="0"  android:keyWidth="40.25%p" android:keyEdgeFlags="left" />
+        <Key android:codes="-5"    android:keyIcon="@drawable/sym_keyboard_delete" android:isRepeatable="true" android:keyEdgeFlags="right" />
         <!--<Key android:codes="-3"    android:keyIcon="@drawable/sym_keyboard_done" android:keyWidth="25%p" android:horizontalGap="12.50%p" />-->
         <!--<Key android:codes="55000" android:keyLabel="PREV" android:horizontalGap="6.25%p" />-->
         <!--<Key android:codes="55005" android:keyLabel="NEXT" android:keyEdgeFlags="right" />-->
