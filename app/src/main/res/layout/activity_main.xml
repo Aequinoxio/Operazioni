@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="#ff0099cc"
     tools:context="com.example.utente.operazioni.MainActivity"
     android:visibility="visible"
-    android:id="@+id/layActivity">
+    android:contextClickable="false"
+    android:id="@+id/layGlobal">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -81,69 +82,180 @@
                 android:textAlignment="center"
                 android:textStyle="normal|bold"
                 android:keepScreenOn="false"
-                android:numeric="integer"
-                android:singleLine="true"
-                android:inputType="number" />
+                android:inputType="number"
+                android:maxLines="1" />
 
             <Button
-                android:text="Verifichiamo"
+                android:text="@string/verifichiamo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button"
                 android:layout_weight="1"
-                android:onClick="checkResult"
+                android:onClick="onCheckResult"
                 android:textSize="18sp"
-                android:background="@drawable/keycolor"
+                android:background="@drawable/button_color"
                 android:textStyle="normal|italic"
                 android:linksClickable="false" />
 
         </LinearLayout>
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <LinearLayout
             android:orientation="vertical"
-            android:checkedButton="@+id/radioButtonMolt">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1.0">
 
-            <RadioButton
-                android:text="Moltiplicazioni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioButtonMolt"
-                android:onClick="onRadioButtonClicked" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-            <RadioButton
-                android:text="Addizioni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioButtonAdd"
-                android:onClick="onRadioButtonClicked" />
-        </RadioGroup>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:background="#00000000">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:background="#00000000"
+            android:weightSum="1"
+            android:layout_weight="1">
         <!-- NOTE No need to develop a system service for keyboard, there is a standard View for that (well, not completely standard, its in a funny package 'android.inputmethodservice'. -->
         <!-- NOTE The graphical layout does not know the package ('java.lang.NoClassDefFoundError: Could not initialize class android.inputmethodservice.KeyboardView') so the keyboard is not shown. -->
-        <android.inputmethodservice.KeyboardView
-            android:id="@+id/keyboardview"
-            android:keyTextSize="48sp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:visibility="gone"
-            android:background="#00000000"
-            android:theme="@style/AppTheme"
-            android:backgroundTint="#00000000"
-            android:keyBackground="@drawable/keycolor"
-            android:alpha="50"
-            android:keyTextColor="#FF000000"
-            android:shadowColor="#BBFFFFFF" />
+            <TableLayout
+                android:layout_height="match_parent"
+                android:stretchColumns="0,1"
+                android:visibility="visible"
+                android:layout_width="110dp">
+
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    android:layout_height="80dp"
+                    <ToggleButton
+                        android:text="@string/togglebutton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/toggleAdd"
+                        android:background="@drawable/toggle_selector"
+                        android:onClick="onToggleButtonClicked"
+                        android:textOff="@string/addizione"
+                        android:textOn="@string/addizione"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textAlignment="gravity"
+                        android:layout_margin="1dp"
+                        android:padding="2dp" />
+
+                    <ToggleButton
+                        android:id="@+id/toggleMolt"
+                        android:text="@string/togglebutton"
+                        android:textOff="@string/moltiplicazione"
+                        android:textOn="@string/moltiplicazione"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/toggle_selector"
+                        android:onClick="onToggleButtonClicked"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textAlignment="gravity"
+                        android:layout_margin="1dp"
+                        android:padding="2dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" >
+
+                    <ToggleButton
+                        android:id="@+id/toggleDiv"
+                        android:textOff="@string/divisione"
+                        android:textOn="@string/divisione"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/toggle_selector"
+                        android:onClick="onToggleButtonClicked"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textAlignment="gravity"
+                        android:layout_margin="1dp"
+                        android:padding="2dp" />
+
+                    <ToggleButton
+                        android:id="@+id/toggleSott"
+                        android:textOff="@string/sottrazione"
+                        android:textOn="@string/sottrazione"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/toggle_selector"
+                        android:onClick="onToggleButtonClicked"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textAlignment="gravity"
+                        android:layout_margin="1dp"
+                        android:padding="2dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" >
+
+                    <ToggleButton
+                        android:id="@+id/toggleRandom"
+                        android:textOff="@string/casuale"
+                        android:textOn="@string/casuale"
+                        android:layout_span="2"
+                        android:text="@string/togglebutton"
+                        android:onClick="onToggleButtonClicked"
+
+                        android:gravity="center"
+                        android:textSize="16sp"
+
+                        android:textStyle="bold|italic"
+                        android:background="@drawable/toggle_selector"
+                        android:drawableStart="@drawable/ic_basic_arithmetic_operators"
+
+                        android:layout_margin="1dp"
+                        android:textAlignment="center"
+                        android:layout_height="40dp"
+                        android:layout_width="40dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Space
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <android.inputmethodservice.KeyboardView
+                    android:id="@+id/keyboardview"
+                    android:keyTextSize="48sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:visibility="visible"
+                    android:background="#00000000"
+                    android:theme="@style/AppTheme"
+                    android:backgroundTint="#00000000"
+                    android:keyBackground="@drawable/keycolor"
+                    android:alpha="50"
+                    android:keyTextColor="#FF000000"
+                    android:shadowColor="#BBFFFFFF" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
